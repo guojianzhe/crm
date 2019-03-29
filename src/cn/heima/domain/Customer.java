@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,11 +17,22 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer cid;  //客户编号
 	private String cust_name;	//客户名称
-	private Integer cust_source;	//客户信息来源
-	private Integer cust_industry;	//客户所属行业
-	private Integer cust_level;		//客户级别
+	
 	private String cust_phone;		//固定电话
 	private String cust_mobile;		//移动电话
+	
+	//3个外键 --3个对象
+	@ManyToOne(targetEntity=BaseDict.class)
+	//name:外键字段名
+	//referencedColumnName:指向的主键字段名
+	@JoinColumn(name="cust_source",referencedColumnName="dist_id")
+	private BaseDict cust_source;		//客户信息来源
+	@ManyToOne(targetEntity=BaseDict.class)
+	@JoinColumn(name="cust_industry",referencedColumnName="dist_id")
+	private BaseDict cust_industry;		//客户所属行业
+	@ManyToOne(targetEntity=BaseDict.class)
+	@JoinColumn(name="cust_level",referencedColumnName="dist_id")
+	private BaseDict cust_level;		//客户级别
 	public Integer getCid() {
 		return cid;
 	}
@@ -32,22 +45,23 @@ public class Customer {
 	public void setCust_name(String cust_name) {
 		this.cust_name = cust_name;
 	}
-	public Integer getCust_source() {
+	
+	public BaseDict getCust_source() {
 		return cust_source;
 	}
-	public void setCust_source(Integer cust_source) {
+	public void setCust_source(BaseDict cust_source) {
 		this.cust_source = cust_source;
 	}
-	public Integer getCust_industry() {
+	public BaseDict getCust_industry() {
 		return cust_industry;
 	}
-	public void setCust_industry(Integer cust_industry) {
+	public void setCust_industry(BaseDict cust_industry) {
 		this.cust_industry = cust_industry;
 	}
-	public Integer getCust_level() {
+	public BaseDict getCust_level() {
 		return cust_level;
 	}
-	public void setCust_level(Integer cust_level) {
+	public void setCust_level(BaseDict cust_level) {
 		this.cust_level = cust_level;
 	}
 	public String getCust_phone() {
