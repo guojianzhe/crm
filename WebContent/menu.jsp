@@ -131,7 +131,7 @@ A.active {
 											<TBODY>
 												<TR>
 													<TD class=menuSmall>
-														<A class=style2 href="${pageContext.request.contextPath }/jsp/customer/add.jsp" target=main>－ 新增客户</A>
+														<A class=style2 href="${pageContext.request.contextPath }/customer_addUI.action" target=main>－ 新增客户</A>
 													</TD>
 												</TR>
 												<TR> 
