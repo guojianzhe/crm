@@ -15,7 +15,7 @@ public class Customer {
 	@Id
 	@Column(name="cust_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer cid;  //客户编号
+	private Integer cust_id;  //客户编号
 	private String cust_name;	//客户名称
 	
 	private String cust_phone;		//固定电话
@@ -25,19 +25,25 @@ public class Customer {
 	@ManyToOne(targetEntity=BaseDict.class)
 	//name:外键字段名
 	//referencedColumnName:指向的主键字段名
-	@JoinColumn(name="cust_source",referencedColumnName="dist_id")
+	@JoinColumn(name="cust_source",referencedColumnName="dict_id")
 	private BaseDict cust_source;		//客户信息来源
 	@ManyToOne(targetEntity=BaseDict.class)
-	@JoinColumn(name="cust_industry",referencedColumnName="dist_id")
+	@JoinColumn(name="cust_industry",referencedColumnName="dict_id")
 	private BaseDict cust_industry;		//客户所属行业
 	@ManyToOne(targetEntity=BaseDict.class)
-	@JoinColumn(name="cust_level",referencedColumnName="dist_id")
+	@JoinColumn(name="cust_level",referencedColumnName="dict_id")
 	private BaseDict cust_level;		//客户级别
-	public Integer getCid() {
-		return cid;
+	public Integer getCust_id() {
+		return cust_id;
 	}
-	public void setCid(Integer cid) {
-		this.cid = cid;
+	public BaseDict getCust_level() {
+		return cust_level;
+	}
+	public void setCust_level(BaseDict cust_level) {
+		this.cust_level = cust_level;
+	}
+	public void setCust_id(Integer cust_id) {
+		this.cust_id = cust_id;
 	}
 	public String getCust_name() {
 		return cust_name;
@@ -58,12 +64,7 @@ public class Customer {
 	public void setCust_industry(BaseDict cust_industry) {
 		this.cust_industry = cust_industry;
 	}
-	public BaseDict getCust_level() {
-		return cust_level;
-	}
-	public void setCust_level(BaseDict cust_level) {
-		this.cust_level = cust_level;
-	}
+
 	public String getCust_phone() {
 		return cust_phone;
 	}
@@ -78,10 +79,11 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [cid=" + cid + ", cust_name=" + cust_name + ", cust_source=" + cust_source + ", cust_industry="
-				+ cust_industry + ", cust_level=" + cust_level + ", cust_phone=" + cust_phone + ", cust_mobile="
-				+ cust_mobile + "]";
+		return "Customer [cust_id=" + cust_id + ", cust_name=" + cust_name + ", cust_phone=" + cust_phone + ", cust_mobile="
+				+ cust_mobile + ", cust_source=" + cust_source + ", cust_industry=" + cust_industry + ", cust_level="
+				+ cust_level + "]";
 	}
+
 	
 	
 }

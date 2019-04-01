@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,6 +14,7 @@
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
+<s:debug></s:debug>
 <FORM id=form1 name=form1
 		action="${pageContext.request.contextPath }/customerServlet?method=addsubmit"
 		method=post>
@@ -52,34 +54,38 @@
 								<td>客户名称：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="custName">
+														style="WIDTH: 180px" maxLength=50 name="custName" value='<s:property value="customerFind.cust_name"/>'>
 								</td>
-								<td>客户级别 ：</td>
-								<td>
-									<select name="cust_level" style="WIDTH: 180px">
-										<option value="1">普通</option>
-										<option value="2">VIP客户</option>
+								<TD>客户级别：</TD>
+								<TD>
+									<select id="level" name="cust_level.dict_id" style="WIDTH: 180px">
+										
+										<s:iterator value="listLevel" var="basedict">
+											<option value='<s:property value="#basedict.dict_id" />'><s:property value="#basedict.dict_item_name" /></option>
+										</s:iterator>
 									</select>
-								</td>
+								</TD>
 							</TR>
 							
 							<TR>
-								
-								<td>信息来源 ：</td>
-								<td>
-									<select name="cust_source" style="WIDTH: 180px">
-										<option value="1">电话营销</option>
-										<option value="2">网络营销</option>
+								<TD>客户来源：</TD>
+								<TD><select id="source" name="cust_source.dict_id" style="WIDTH: 180px">
+										
+										<s:iterator value="listSource" var="basedict">
+											<option value='<s:property value="#basedict.dict_id" />'><s:property value="#basedict.dict_item_name" /></option>
+										</s:iterator>
 									</select>
-								</td>
-								<td>所属行业 ：</td>
-								<td>
-									<select name="cust_industry" style="WIDTH: 180px">
-										<option value="1">房地产</option>
-										<option value="2">对外贸易</option>
+								</TD>
+								<TD>客户所属行业：</TD>
+								<TD><select id="industry" name="cust_industry.dict_id" style="WIDTH: 180px">
+										
+										<s:iterator value="listIndustry" var="basedict">
+											<option value='<s:property value="#basedict.dict_id" />'><s:property value="#basedict.dict_item_name" /></option>
+										</s:iterator>
 									</select>
-								</td>
+								</TD>
 							</TR>
+							
 							
 							<TR>
 								
@@ -87,12 +93,12 @@
 								<td>固定电话 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="custPhone">
+														style="WIDTH: 180px" maxLength=50 name="custPhone" value='<s:property value="customerFind.cust_phone"/>'>
 								</td>
 								<td>移动电话 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="custMobile">
+														style="WIDTH: 180px" maxLength=50 name="custMobile" value='<s:property value="customerFind.cust_mobile"/>'>
 								</td>
 							</TR>
 							

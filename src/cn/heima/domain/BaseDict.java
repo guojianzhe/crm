@@ -5,12 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.apache.struts2.convention.annotation.ParentPackage;
 
 // 1
 @Entity
-@ParentPackage("base_dict")
+@Table(name="base_dict")
 public class BaseDict
 {
 	@Id
@@ -71,6 +72,12 @@ public class BaseDict
 	}
 	public void setDict_memo(String dict_memo) {
 		this.dict_memo = dict_memo;
+	}
+	@Override
+	public String toString() {
+		return "BaseDict [dict_id=" + dict_id + ", dict_type_code=" + dict_type_code + ", dict_type_name="
+				+ dict_type_name + ", dict_item_name=" + dict_item_name + ", dict_item_code=" + dict_item_code
+				+ ", dict_sort=" + dict_sort + ", dict_enable=" + dict_enable + ", dict_memo=" + dict_memo + "]";
 	}
 	
 	
