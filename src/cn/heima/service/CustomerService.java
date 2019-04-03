@@ -23,6 +23,10 @@ public interface CustomerService {
 
 	Customer findById(Integer cust_id);
 
+	void update(Customer customer);
+
+	void delete(Customer customer);
+
 	
 	
 }

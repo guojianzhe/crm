@@ -9,14 +9,23 @@
 <LINK href="${pageContext.request.contextPath }/css/Style.css" type=text/css rel=stylesheet>
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css
 	rel=stylesheet>
-
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+			
+			$("#level option[value='<s:property value="customerFind.cust_level.dict_id"/>']").prop("selected",true);
+			$("#source option[value='<s:property value="customerFind.cust_source.dict_id"/>']").prop("selected",true);
+			$("#industry option[value='<s:property value="customerFind.cust_industry.dict_id"/>']").prop("selected",true);
+			
+		})
+</script>
 
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
 <s:debug></s:debug>
 <FORM id=form1 name=form1
-		action="${pageContext.request.contextPath }/customerServlet?method=addsubmit"
+		action="${pageContext.request.contextPath }/customer_update.action"
 		method=post>
 		
 
@@ -35,6 +44,7 @@
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
 				<TR>
+				
 					<TD width=15 background=${pageContext.request.contextPath }/images/new_022.jpg><IMG
 						src="${pageContext.request.contextPath }/images/new_022.jpg" border=0></TD>
 					<TD vAlign=top width="100%" bgColor=#ffffff>
@@ -53,8 +63,9 @@
 							<TR>
 								<td>客户名称：</td>
 								<td>
+								<input type="hidden" name="cust_id" value="<s:property value='model.cust_id' />">
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="custName" value='<s:property value="customerFind.cust_name"/>'>
+														style="WIDTH: 180px" maxLength=50 name="cust_name" value='<s:property value="customerFind.cust_name"/>'>
 								</td>
 								<TD>客户级别：</TD>
 								<TD>
@@ -93,12 +104,12 @@
 								<td>固定电话 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="custPhone" value='<s:property value="customerFind.cust_phone"/>'>
+														style="WIDTH: 180px" maxLength=50 name="cust_phone" value='<s:property value="customerFind.cust_phone"/>'>
 								</td>
 								<td>移动电话 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="custMobile" value='<s:property value="customerFind.cust_mobile"/>'>
+														style="WIDTH: 180px" maxLength=50 name="cust_mobile" value='<s:property value="customerFind.cust_mobile"/>'>
 								</td>
 							</TR>
 							

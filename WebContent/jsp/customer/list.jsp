@@ -13,13 +13,18 @@
 <script type="text/javascript">
 $(function()
 		{
-			
+	
 			
 			$("#level option[value='<s:property value="cust_level.dict_id"/>']").prop("selected",true);
 			$("#source option[value='<s:property value="cust_source.dict_id"/>']").prop("selected",true);
 			$("#industry option[value='<s:property value="cust_industry.dict_id"/>']").prop("selected",true);
 			
 		})
+		function del(id) {
+			if(confirm("确定要删除吗")){
+				location.href="${pageContext.request.contextPath }/customer_delete?cust_id="+id;
+			}
+		}
 </script>
 <s:debug></s:debug>
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
@@ -126,7 +131,7 @@ $(function()
 														<TD>
 														<a href="${pageContext.request.contextPath }/customer_edit?cust_id=<s:property value='#customer.cust_id'/>">修改</a>
 														&nbsp;&nbsp;
-														<a href="#">删除</a>
+														<a href="javascript:;" onclick="del(<s:property value='#customer.cust_id'/>)">删除</a>
 														</TD>
 													</TR>
 												</s:iterator>

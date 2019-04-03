@@ -51,5 +51,15 @@ public class CustomerDaoImpl implements CustomerDao{
 		
 		return hibernateTemplate.get(Customer.class, cust_id);
 	}
+	@Override
+	public void update(Customer customer) {
+		hibernateTemplate.update(customer);
+		
+	}
+	@Override
+	public void delete(Customer customer) {
+		hibernateTemplate.delete(customer);
+		
+	}
 
 }

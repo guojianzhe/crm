@@ -118,7 +118,7 @@ public class CustomerAction extends ActionSupport implements  ModelDriven<Custom
 	}
 	
 	//到修改页面
-	@Action(value="customer_edit",results= {@Result(name="eidtCustomer",location="/jsp/customer/edit.jsp")})
+	@Action(value="customer_edit",results= {@Result(name="editCustomer",location="/jsp/customer/edit.jsp")})
 	public String edit() {
 		
 		//查询所有信息来源数据
@@ -130,10 +130,21 @@ public class CustomerAction extends ActionSupport implements  ModelDriven<Custom
 		
 		customerFind = customerService.findById(customer.getCust_id());
 		
-		System.out.println(customerFind);
-		return "eidtCustomer";
+		return "editCustomer";
 	}
-	
+	@Action(value="customer_update",results= {@Result(name="showList",type="redirectAction",location="customer_list")})
+	public String update() {
+		
+		customerService.update(customer);
+		
+		return "showList";
+	}
+	@Action(value="customer_delete",results= {@Result(name="showList",type="redirectAction",location="customer_list")})
+	public String delete() {
+		customerService.delete(customer);
+		
+		return "showList";
+	}
 	private Customer customer = new Customer();
 	@Override
 	public Customer getModel() {
